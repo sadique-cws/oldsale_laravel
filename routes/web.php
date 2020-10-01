@@ -16,3 +16,4 @@ use App\Http\Controllers\Users;
 
 Route::get('/',[Users::class,"home"]);
 Route::get('/add',[Users::class,"add"]);
+Route::post('/addPost',[Users::class,"addPost"]);

@@ -7,9 +7,16 @@
 
 @section('content')
     <div class="container">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         <div class="row">
             <div class="col-lg-6 mx-auto">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="/addPost" method="POST" enctype="multipart/form-data">
                     @csrf
                 <div class="form-group">
                     <label for="title">title</label>
@@ -26,9 +33,19 @@
                     <input type="text" name="state" class="form-control">
                 </div>
                 
+                
+                
+                <div class="form-group">
+                    <label for="address">address</label>
+                    <input type="text" name="address" class="form-control">
+                </div>
                 <div class="form-group">
                     <label for="category">category</label>
-                    <input type="text" name="category" class="form-control">
+                    <select name="category" class="form-control">
+                        @foreach ($category as $cat)
+                    <option value="{{$cat->id}}">{{$cat->title}}</option>    
+                        @endforeach
+                    </select>
                 </div>
                 
                 <div class="form-group">
